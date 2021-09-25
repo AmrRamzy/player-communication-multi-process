@@ -1,0 +1,39 @@
+requirements:
+	maven
+	java: 8+
+
+jar description:
+	jar name: player-communication-multi-process-0.0.1-SNAPSHOT.jar
+	jar parameters:
+		1-first parameter = port (mandatory):
+			any unused port on the machine in the following range (0 and 65535)
+		2-second parameter = name
+			a.	to start an Initiator name parameter is (mandatory) and must be "initiator"  
+			b.	to start a normal player name parameter is (optional) and can have any value 
+
+Build:
+	1.	open terminal or CMD
+	2.	cd to project directory (player-communication-multi-process)
+	3.	run "mvn clean package" to build the application and generate the jar file
+
+important Notes: 
+	1.	port value must be the same for both player.sh and initiator.sh
+	2.	player.sh has to be started first to start server socket and listen on the port for any connection
+
+run application in Linux:
+	1.	open terminal
+	2.	cd to project directory (player-communication-multi-process)
+	3.	run "bash player.sh" to use default values port:9998 name: player-2   or  run "bash player.sh {port} {name}" to change port or name 
+	4.	open new terminal
+	5.	cd to project directory (player-communication-multi-process)
+	6.	run "bash initiator.sh" to use default values port:9998 name: initiator  or  run "bash initiator.sh {port}" to change port
+
+
+run application in windows:
+	1.	open CMD
+	2.	cd to project directory (player-communication-multi-process)
+	3.	run "java -jar ./target/player-communication-multi-process-0.0.1-SNAPSHOT.jar {port} {name}" to start the application
+	4.	open new CMD window
+	5.	cd to project directory (player-communication-multi-process)
+	6.	run "java -jar ./target/player-communication-multi-process-0.0.1-SNAPSHOT.jar {port} initiator" to start the application
+
